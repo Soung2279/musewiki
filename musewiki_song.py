@@ -62,6 +62,9 @@ def get_voice_main_menu():
 
 @sv.on_fullmatch(["帮助MuseDash百科", "帮助musedashwiki", "帮助md百科", "musewiki帮助", "MuseDash百科"])
 async def bangzhu_musewiki(bot, ev) -> MessageSegment:
+    account = await bot.get_login_info()
+    accid = account.get('user_id')
+    check = str(accid)
     file = get_voice_main_menu()
     voice_rec = MessageSegment.record(f'file:///{os.path.abspath(file.path)}')
     uid = ev['user_id']
@@ -108,7 +111,10 @@ async def bangzhu_musewiki(bot, ev) -> MessageSegment:
     
     final_output = show_pic + sv_help
 
-    update_info = f'当前版本{wiki_ver}' #这个指令在wiki_log.py里面
+    if check == '756160433':  #大概意思是检查bot登录的qq号如果不是这个就发送百科版本号。夹带私货（bushi，删了不影响运行
+        update_info = f'本家Bot使用中'
+    else:
+        update_info = f'当前版本{wiki_ver}，可发送【查看百科更新】查看最新内容' #这个指令在wiki_log.py里面
     await bot.send(ev, final_output)
     time.sleep(2)  #避免长消息刷屏引起风控，等待2秒
     await bot.send(ev, update_info)
@@ -182,7 +188,7 @@ async def muse_wiki_advance(bot, ev: CQEvent):
     if guess:
         msg = f'没有找到歌曲"《{name}》"哦！可能是输入有误或未收录...\n（也可能是bot太笨了qaq'
         await bot.send(ev, msg)
-        if random.random() < 0.50:
+        if random.random() < 0.30:
             await bot.send(ev, ADVANCE_NOTICE)
         msg = f'我猜您有{confi}%的可能在找{guess_name}哦'
         await bot.send(ev, msg)
@@ -206,7 +212,7 @@ async def muse_wiki_advance(bot, ev: CQEvent):
 @sv.on_fullmatch(('随机歌曲信息'))
 async def muse_wiki_song_push(bot, ev: CQEvent):
     my_dict = _song_data.SONG_DATA
-    num = random.choice(list(my_dict))
+    num = random.choice(list(my_dict.keys()))
     song_data = _song_data.SONG_DATA[num]
     SongName = song_data[0]  #获取歌曲原名
     s = SongName
@@ -216,7 +222,7 @@ async def muse_wiki_song_push(bot, ev: CQEvent):
             await bot.send(ev, "bot坏掉惹...")
             return
         else:
-            song_cover, song_info_1, pack_cover, song_info_2, song_level, song_info_3, song_data = await get_song_info_from_song(available_songs[0])
+            song_cover, song_info_1, pack_cover, song_info_2, song_level, song_info_3, song_data, Song_Demo = await get_song_info_from_song(available_songs[0])
 
     final_msg = song_cover + song_info_1 + pack_cover + song_info_2 + song_level + song_info_3 #合成单条文本消息
     await bot.send(ev, final_msg)
@@ -246,9 +252,11 @@ async def wiki_push_songs():
     bot = hoshino.get_bot()
     glist = await svsong.get_enable_groups()
     info_head = '今日份MuseDash歌曲推送'
-    song_dict = _song_data.SONG_DATA
-    random_name = random.choice(list(song_dict[0]))
-    s = random_name
+    my_dict = _song_data.SONG_DATA
+    num = random.choice(list(my_dict.keys()))
+    song_data = _song_data.SONG_DATA[num]
+    SongName = song_data[0]  #获取歌曲原名
+    s = SongName
     if s:
         available_songs = keyword_search(s)
         if not available_songs:
@@ -262,4 +270,4 @@ async def wiki_push_songs():
         sid = random.choice(selfids)
         await bot.send_group_msg(self_id=sid, group_id=gid, message=info_head)
         await bot.send_group_msg(self_id=sid, group_id=gid, message=final_msg)
-        #await bot.send_group_msg(self_id=sid, group_id=gid, message=Song_Demo) 如果需要发送demo，就取消注释这条。
+        await bot.send_group_msg(self_id=sid, group_id=gid, message=Song_Demo) #如果需要发送demo，就取消注释这条。

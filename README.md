@@ -10,6 +10,8 @@ MuseDashWiki
 ===========================
 <div align="left">
 
+#### 原项目地址
+- [musewiki](https://github.com/Soung2279/musewiki)
 
 →→ **[查看更新日志](#更新日志)**
 
@@ -85,7 +87,7 @@ MODULES_ON = {
 插件安装完成后，可使用基本的**歌曲/角色/精灵查询**功能。但由于本插件使用了 大量图片/语音资源 ，需要进行资源包的补充。
 
 资源包：
-~~通过Release下载(如果有的话)~~
+~~通过Release下载(如果有的话)~~  可在原项目地址Release查看
 <details>
   <summary>百度网盘</summary>
 
@@ -206,6 +208,10 @@ made by [Soung2279@Github](https://github.com/Soung2279/)
 ****
 
 ### 更新日志
+
+#### 2021/8/17  v1.0.0
+
+修复【随机歌曲信息】和百科歌曲推送无法正常使用的错误
 
 #### 2021/8/15  v1.0.0
 
