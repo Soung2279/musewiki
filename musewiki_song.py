@@ -27,6 +27,8 @@ Wiki_Menu_Second_img = R.img(f"musewiki/etc/WelcomeLogo2.png").cqcode
 wiki_ver = wiki_log.wiki_ver  #从wiki_log.py里获取MuseDash百科的版本号，更新维护用的
 tips_tuple = _song_data.Muse_Tips  #从_song_data.py里获取MuseDash的小提示，使用菜单时用的
 
+main_path = hoshino.config.RES_DIR  #使用在 _bot_.py 里填入的资源库文件夹
+
 sv_help = '''
     ※MuseDash百科※
 欢迎使用MuseDash百科！当前菜单有以下内容：
@@ -62,9 +64,6 @@ def get_voice_main_menu():
 
 @sv.on_fullmatch(["帮助MuseDash百科", "帮助musedashwiki", "帮助md百科", "musewiki帮助", "MuseDash百科"])
 async def bangzhu_musewiki(bot, ev) -> MessageSegment:
-    account = await bot.get_login_info()
-    accid = account.get('user_id')
-    check = str(accid)
     file = get_voice_main_menu()
     voice_rec = MessageSegment.record(f'file:///{os.path.abspath(file.path)}')
     uid = ev['user_id']
@@ -110,18 +109,10 @@ async def bangzhu_musewiki(bot, ev) -> MessageSegment:
         show_pic = Wiki_Menu_Second_img
     
     final_output = show_pic + sv_help
-
-    if check == '756160433':  #大概意思是检查bot登录的qq号如果不是这个就发送百科版本号。夹带私货（bushi，删了不影响运行
-        update_info = f'本家Bot使用中'
-    else:
-        update_info = f'当前版本{wiki_ver}，可发送【查看百科更新】查看最新内容' #这个指令在wiki_log.py里面
     await bot.send(ev, final_output)
-    time.sleep(2)  #避免长消息刷屏引起风控，等待2秒
-    await bot.send(ev, update_info)
 
 
 # ID: [Song_Name, Belongs_Pack, Artist, Length, BPM, Level_To_Unlock, Difficulty_Sort, Highest_Difficulty, Search_Name]
-#上面辣么长一串英文是啥呢？其实是字典（_song_data.py）的格式，使用对应下标就可查询想要的内容，例如想要bot发送Artist(作者)，用下标[2]就可以读取辣（下标从0开始哦）
 async def get_song_info_from_song(song):
     song_data = _song_data.SONG_DATA[song]
     Search_Name = song_data[8]  #获取查询名，用于获取封面图片名称
@@ -270,4 +261,4 @@ async def wiki_push_songs():
         sid = random.choice(selfids)
         await bot.send_group_msg(self_id=sid, group_id=gid, message=info_head)
         await bot.send_group_msg(self_id=sid, group_id=gid, message=final_msg)
-        await bot.send_group_msg(self_id=sid, group_id=gid, message=Song_Demo) #如果需要发送demo，就取消注释这条。
+        await bot.send_group_msg(self_id=sid, group_id=gid, message=Song_Demo)
