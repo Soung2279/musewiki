@@ -99,6 +99,15 @@ MODULES_ON = {
 插件安装完成后，可使用基本的**歌曲/角色/精灵查询**功能。但由于本插件使用了 大量图片/语音资源 ，需要进行资源包的补充。
 <details>
   <summary>百度网盘</summary>
+ 
+ - [语音资源包-1.57G](https://pan.baidu.com/s/1uu8NpD6GT2RxWaVS_K4o8A)
+ > 包含demo歌曲，角色语音，菜单bgm等
+ > 提取码：2279
+
+ - [图片资源包-949MB](https://pan.baidu.com/s/1RJgK26UIDoKxRYGsPXq_cQ)
+ > 包含歌曲封面图片，角色/精灵图片，UI等
+ > 提取码：2279
+  
 </details>
 
 ### 指令
