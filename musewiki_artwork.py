@@ -11,15 +11,17 @@ from hoshino.typing import CQEvent, MessageSegment
 from hoshino.util import FreqLimiter, DailyNumberLimiter
 from . import _song_data
 
+main_path = hoshino.config.RES_DIR  #使用在 _bot_.py 里填入的资源库文件夹
+
 tz = pytz.timezone('Asia/Shanghai')
 
 _max = 1
 _nlmt = DailyNumberLimiter(_max)
 
-forward_msg_name = 'SoungBot测试版'  #全图查询时，转发消息使用的呢称
-forward_msg_uid = '756160433'  #全图查询时，转发消息使用的画像
+forward_msg_name = 'SoungBot测试版'
+forward_msg_uid = '756160433'
 
-_cd = 300  #全图查询调用间隔冷却时间(s)  为避免被风控，建议调高
+_cd = 300  #调用间隔冷却时间(s)  为避免被风控，建议调高
 _flmt = FreqLimiter(_cd)
 
 Wiki_Menu_Artwork_img = R.img(f"musewiki/etc/artwork.png").cqcode
@@ -60,9 +62,14 @@ sv = Service(
     )
 
 def get_voice_artwork_menu():
-    filename = 'TroveBgm.wav'  #首次使用菜单时的BGM
+    filename = 'TroveBgm.wav'
     voice_rec = R.get('record/musewiki/audioclip/', filename)
     return voice_rec
+
+def get_FileSize(filePath):
+    fsize = os.path.getsize(filePath)
+    fsize = fsize/float(1024 * 1024)
+    return round(fsize, 2)
 
 @sv.on_fullmatch(["帮助MuseDash百科-插图查询", "帮助百科插图查询"])
 async def bangzhu_musewiki_artwork(bot, ev) -> MessageSegment:
@@ -506,11 +513,18 @@ text56 = title56 + sendpic56 + author56 + author_page56
 pic57 = R.img('musewiki/artwork/artwork(57).png').cqcode
 sendpic57 = str(pic57)
 title57 = '事情正按照计划中所设想的那样发展（拖走'
-author57 = '画师：暂未收录\n'
+author57 = '画师：Ande\n'
 author_page57 = '画师主页：暂未收录'
 text57 = title57 + sendpic57 + author57 + author_page57
 
-text_dict = (text1,text2,text3,text4,text5,text6,text7,text8,text9,text10,text11,text12,text13,text14,text15,text16,text17,text18,text19,text20,text21,text22,text23,text24,text25,text26,text27,text28,text29,text30,text31,text32,text33,text34,text35,text36,text37,text38,text39,text40,text41,text42,text43,text44,text45,text46,text47,text48,text49,text50,text51,text52,text53,text54,text55,text56,text57)
+pic58 = R.img('musewiki/artwork/artwork(58).png').cqcode
+sendpic58 = str(pic58)
+title58 = '欢迎来到喵斯解忧诊所，专治各种节奏苦手。\n但是我的心跳、怎么越来越快了呢……'
+author58 = '画师：谷地\n'
+author_page58 = '画师主页：暂未收录'
+text58 = title58 + sendpic58 + author58 + author_page58
+
+text_dict = (text1,text2,text3,text4,text5,text6,text7,text8,text9,text10,text11,text12,text13,text14,text15,text16,text17,text18,text19,text20,text21,text22,text23,text24,text25,text26,text27,text28,text29,text30,text31,text32,text33,text34,text35,text36,text37,text38,text39,text40,text41,text42,text43,text44,text45,text46,text47,text48,text49,text50,text51,text52,text53,text54,text55,text56,text57,text58)
 #使用元组进行选择
 #别问我为什么不单独做个json，问就是想到的时候已经写完了就懒得改了=  =。
 
@@ -911,18 +925,25 @@ mvinfo_all = (mvinfo_1,mvinfo_2,mvinfo_3,mvinfo_4,mvinfo_5,mvinfo_6,mvinfo_7,mvi
 @sv.on_prefix(('动画查询'))
 async def send_mv(bot, ev: CQEvent):
     s = ev.message.extract_plain_text()
+    all_nums = len(mvinfo_all)
+    all_range = list(range(1, all_nums))
+    size = get_FileSize(f"{main_path}img/musewiki/artwork_moive/{s}.mp4")
+    
     if not s:
         await bot.send(ev, "请发送[动画查询 编号]~", at_sender=True)
         return
-    if s:
+    if s in str(all_range):
         num = int(s)-1 #下标从0开始，所以要-1
         output = mvinfo_all[num]
         data = {
             "type": "video",
             "data": {
-                "file": f"file:///C:/Resources/img/musewiki/artwork_moive/{s}.mp4"
+                "file": f"file:///{main_path}img/musewiki/artwork_moive/{s}.mp4"
                 }
             }
         await bot.send(ev, output)
-        time.sleep(1)
+        await bot.send(ev, f"文件大小：%.2f MB"%(size))
         await bot.send(ev, data)
+    else:
+        await bot.send(ev, f"该编号不在范围内哦~目前已收录{all_nums}个动画资料。")
+        print(str(all_range))

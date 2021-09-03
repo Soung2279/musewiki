@@ -128,7 +128,8 @@ async def get_song_info_from_song(song):
     Level_Stars = R.img(f"musewiki/level_stars/{Difficulty_Sort}.png").cqcode  #发送难度分级的图片路径
     Pack_Img = R.img(f"musewiki/pack/{Pack}.png").cqcode  #发送曲包图片路径
     Cover_Img = R.img(f"musewiki/songcover/{Search_Name}.png").cqcode  #发送歌曲封面路径
-    Song_Demo = f'[CQ:record,file=file:///C:/Resources/record/musewiki/song_demos/{Search_Name}_demo.wav]'  #发送歌曲demo路径
+    Song_Demo = R.rec(f"musewiki/song_demos/{Search_Name}_demo.wav").cqcode  #发送歌曲demo路径
+
 
     pack_cover= str(Pack_Img)
     song_cover = str(Cover_Img)
