@@ -763,7 +763,7 @@ async def wiki_query_score_all(bot, ev):
     "data": {
         "url": "https://tieba.baidu.com/p/6843150739?see_lz=1",
         "title": "【数据党】MuseDash数据考据 分数公式",
-        "contene": "from musedash吧 一墨滢一"
+        "content": "from musedash吧 一墨滢一"
         }
     }
     await bot.send(ev, data)
@@ -775,7 +775,7 @@ async def wiki_query_qa(bot, ev):
     "data": {
         "url": "https://tieba.baidu.com/p/6181852681?see_lz=1",
         "title": "Muse Dash常见问题Q＆A（科普向）",
-        "contene": "from musedash吧"
+        "content": "from musedash吧"
         }
     }
     await bot.send(ev, data)

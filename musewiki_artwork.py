@@ -524,7 +524,29 @@ author58 = '画师：谷地\n'
 author_page58 = '画师主页：暂未收录'
 text58 = title58 + sendpic58 + author58 + author_page58
 
-text_dict = (text1,text2,text3,text4,text5,text6,text7,text8,text9,text10,text11,text12,text13,text14,text15,text16,text17,text18,text19,text20,text21,text22,text23,text24,text25,text26,text27,text28,text29,text30,text31,text32,text33,text34,text35,text36,text37,text38,text39,text40,text41,text42,text43,text44,text45,text46,text47,text48,text49,text50,text51,text52,text53,text54,text55,text56,text57,text58)
+#NEW!!!!!!!!!!
+pic59 = R.img('musewiki/artwork/artwork(59).png').cqcode
+sendpic59 = str(pic59)
+title59 = '灵梦——这玩意儿可比弹幕对战难多了！就不能把这些家伙一炮轰掉吗！'
+author59 = '画师：mil7uka\n'
+author_page59 = '画师主页：https://m.weibo.cn/u/5890309364'
+text59 = title59 + sendpic59 + author59 + author_page59
+
+pic60 = R.img('musewiki/artwork/artwork(60).png').cqcode
+sendpic60 = str(pic60)
+title60 = 'Pose 摆完了就快去解决异变啦！'
+author60 = '画师：狗肉\n'
+author_page60 = '画师主页：https://m.weibo.cn/u/2899151975'
+text60 = title60 + sendpic60 + author60 + author_page60
+
+pic61 = R.img('musewiki/artwork/artwork(61).png').cqcode
+sendpic61 = str(pic61)
+title61 = '战无不胜·幻想乡最强城管 VS 最凶最恶·热血高校贝斯手——今天，在此决出最强！'
+author61 = '画师：核燃黑猫\n'
+author_page61 = '画师主页：https://m.weibo.cn/u/2148538292'
+text61 = title61 + sendpic61 + author61 + author_page61
+
+text_dict = (text1,text2,text3,text4,text5,text6,text7,text8,text9,text10,text11,text12,text13,text14,text15,text16,text17,text18,text19,text20,text21,text22,text23,text24,text25,text26,text27,text28,text29,text30,text31,text32,text33,text34,text35,text36,text37,text38,text39,text40,text41,text42,text43,text44,text45,text46,text47,text48,text49,text50,text51,text52,text53,text54,text55,text56,text57,text58,text59,text60,text61)
 #使用元组进行选择
 #别问我为什么不单独做个json，问就是想到的时候已经写完了就懒得改了=  =。
 
@@ -919,9 +941,15 @@ mvinfo_11 = '''
 画师：mil7uka
 画师主页：https://m.weibo.cn/u/5890309364
 '''.strip()
+#NEW!!!!!!!!!!
+mvinfo_12 = '''
+灵梦——这玩意儿可比弹幕对战难多了！就不能把这些家伙一炮轰掉吗！
+画师：mil7uka
+画师主页：https://m.weibo.cn/u/5890309364
+'''.strip()
 
 
-mvinfo_all = (mvinfo_1,mvinfo_2,mvinfo_3,mvinfo_4,mvinfo_5,mvinfo_6,mvinfo_7,mvinfo_8,mvinfo_9,mvinfo_10,mvinfo_11)
+mvinfo_all = (mvinfo_1,mvinfo_2,mvinfo_3,mvinfo_4,mvinfo_5,mvinfo_6,mvinfo_7,mvinfo_8,mvinfo_9,mvinfo_10,mvinfo_11,mvinfo_12)
 @sv.on_prefix(('动画查询'))
 async def send_mv(bot, ev: CQEvent):
     s = ev.message.extract_plain_text()

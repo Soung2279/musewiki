@@ -114,19 +114,15 @@ MODULES_ON = {
 <details>
   <summary>百度网盘</summary>
  
- - [语音资源包 - 1.6g](https://pan.baidu.com/s/1yjZ_8pInWjWzMVveT87TCA)
-> 包含demo歌曲，角色语音，菜单bgm等
+ - [语音资源包 - 1.6g](https://pan.baidu.com/s/1uu8NpD6GT2RxWaVS_K4o8A)
+ > 包含demo歌曲，角色语音，菜单bgm等
+ > 提取码：2279
+ > 更新时间：2021/9/4
 
-> 提取码：2279
-
-> 更新时间：2021/9/4
-
- - [图片资源包 - 952mb](https://pan.baidu.com/s/1qzd_-E_Z264C4H7K-QSHwQ)
-> 包含歌曲封面图片，角色/精灵图片，UI等
-
-> 提取码：2279
-
-> 更新时间：2021/9/4
+ - [图片资源包 - 952mb](https://pan.baidu.com/s/1RJgK26UIDoKxRYGsPXq_cQ)
+ > 包含歌曲封面图片，角色/精灵图片，UI等
+ > 提取码：2279
+ > 更新时间：2021/9/4
   
 </details>
 
@@ -248,6 +244,17 @@ made by [Soung2279@Github](https://github.com/Soung2279/)
 ****
 
 ### 更新日志
+
+#### 2021/9/4  Version 1.5.3 (242)
+
+【新】
+版本号同步为游戏官方版本号
+
+【更新】
+同步更新MuseDash官方内容。增添了新的角色，插图与歌曲资料
+
+【修复】
+修复部分曲包和歌曲缺失问题
 
 #### 2021/9/4  v1.0.6
 

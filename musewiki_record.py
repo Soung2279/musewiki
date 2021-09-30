@@ -116,13 +116,16 @@ magicvc_folder = "musewiki/角色语音/玛莉嘉/魔法少女/触摸语音/"
 violinvc_folder = "musewiki/角色语音/玛莉嘉/提琴少女/触摸语音/"
 evilvc_folder = "musewiki/角色语音/玛莉嘉/小恶魔/触摸语音/"
 maidvc_folder = "musewiki/角色语音/玛莉嘉/女仆/触摸语音/"
+#NEW!!!!!!
+reimuvc_folder = "musewiki/角色语音/博丽灵梦/红白巫女/触摸语音/"
 
 neko_hurt_folder = "musewiki/角色语音/NEKO/通用受伤音效/"
 yume_hurt_folder = "musewiki/角色语音/柚梅/通用受伤音效/"
 rin_hurt_folder = "musewiki/角色语音/凛/通用受伤音效/"
 buro_hurt_folder = "musewiki/角色语音/布若/通用受伤音效/"
 marija_hurt_folder = "musewiki/角色语音/玛莉嘉/通用受伤音效/"
-
+#NEW!!!!!!
+reimu_hurt_folder = "musewiki/角色语音/博丽灵梦/通用受伤音效/"
 
 @sv.on_prefix(('摸摸'))
 async def wiki_send_record(bot, ev: CQEvent):
@@ -152,6 +155,14 @@ async def wiki_send_record(bot, ev: CQEvent):
             filename = random.choice(list(voice_data))
             text = voice_data[filename]
             rrec = R.rec(f"{yumevc_folder}{filename}").cqcode
+            await bot.send(ev, rrec)
+            await bot.send(ev,text)
+            return
+        if input == "博丽灵梦" or input == "红白巫女" or input == "reimu":#联动目前唯一所以可直接匹配名称
+            voice_data = _record_data.REIMU_VOICE  # 字典REIMU_VOICE
+            filename = random.choice(list(voice_data))
+            text = voice_data[filename]
+            rrec = R.rec(f"{reimuvc_folder}{filename}").cqcode
             await bot.send(ev, rrec)
             await bot.send(ev,text)
             return
@@ -284,7 +295,7 @@ async def wiki_send_record(bot, ev: CQEvent):
             await bot.send(ev,text)
             return
 
-all_voice_folder = [nekovc_folder,yumevc_folder,jkvc_folder,jokervc_folder,pilot_folder,idol_folder,zombie_folder,rockvc_folder,workervc_folder,sleepyvc_folder,santavc_folder,bunnyvc_folder,rampagevc_folder,blackvc_folder,magicvc_folder,violinvc_folder,evilvc_folder]
+all_voice_folder = [nekovc_folder,yumevc_folder,jkvc_folder,jokervc_folder,pilot_folder,idol_folder,zombie_folder,rockvc_folder,workervc_folder,sleepyvc_folder,santavc_folder,bunnyvc_folder,rampagevc_folder,blackvc_folder,magicvc_folder,violinvc_folder,evilvc_folder,reimuvc_folder,maidvc_folder]
 
 @sv.on_fullmatch(["随机角色语音"])
 async def random_send_voice(bot, ev):
@@ -372,6 +383,18 @@ async def wiki_send_hurt(bot, ev: CQEvent):
             return
         if input == "玛莉嘉" or input == "marija":
             final_fd = str(main_path+'record/'+marija_hurt_folder)
+            filelist = os.listdir(final_fd)
+            path = None
+            while not path or not os.path.isfile(path):
+                filename = random.choice(filelist)
+                path = os.path.join(final_fd, filename)
+            try:
+                await bot.send(ev, f'[CQ:record,file=file:///{path}]')
+            except CQHttpError:
+                sv.logger.error(f"发送record失败")
+            return
+        if input == "博丽灵梦" or input == "reimu":
+            final_fd = str(main_path+'record/'+reimu_hurt_folder)
             filelist = os.listdir(final_fd)
             path = None
             while not path or not os.path.isfile(path):

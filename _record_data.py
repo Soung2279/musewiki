@@ -257,6 +257,21 @@ MAID_VOICE = {
 "VoiceMaidMainHidden02.wav":"浴室的水也放好了，才、才不是那个意思啦！",
 "VoiceMaidMainHidden03.wav":"全…全都洗干净了…包…包括我自己…"
 }
+#NEW!!!
+REIMU_VOICE = {
+"VoiceReimuMain01.wav":"节奏是什么？只要把敌人都打倒不就行了吗！",
+"VoiceReimuMain02.wav":"布若？那孩子和萃香很像呢……虽然吵吵闹闹的，不过并不讨厌。",
+"VoiceReimuMain03.wav":"你看上去挺闲的嘛……要来一杯茶吗？",
+"VoiceReimuMain04.wav":"紫那家伙……我会出现在这里，绝对是因为那家伙的恶作剧！",
+"VoiceReimuMain05.wav":"别卷了，工作都做完了不就行了吗——",
+"VoiceReimuMain06.wav":"戳来戳去的不累吗？我不怕痒的哟？",
+"VoiceReimuMain07.wav":"道具？插图？就没有什么更值钱的东西吗？",
+"VoiceReimuMain08.wav":"谢谢就不用说了，请把工资放到赛钱箱~",
+"VoiceReimuMain09.wav":"我决定了，在这里也建一座神社怎么样？这样就有双倍的收入……！",
+"VoiceReimuMainHidden01.wav":"……你刚才做过的事情，我会加倍奉还回去！",
+"VoiceReimuMainHidden02.wav":"对人家的腋下那么在意干嘛！这里可没有破绽哦！",
+"VoiceReimuMainHidden03.wav":"想要S？那、那就十万...不是？那你指的是什么？"
+}
 
 
 
