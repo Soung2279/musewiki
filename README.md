@@ -246,7 +246,7 @@ made by [Soung2279@Github](https://github.com/Soung2279/)
 ### 更新日志
 
 
-####2021/10/29  Version 1.6.0 (246)
+#### 2021/10/29  Version 1.6.0 (246)
 
 【更新】
 同步更新MuseDash官方内容。增添了新的歌曲资料（肥宅快乐包vol.13与计划通补完计划一首新曲）
