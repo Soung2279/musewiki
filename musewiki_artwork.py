@@ -546,7 +546,21 @@ author61 = '画师：核燃黑猫\n'
 author_page61 = '画师主页：https://m.weibo.cn/u/2148538292'
 text61 = title61 + sendpic61 + author61 + author_page61
 
-text_dict = (text1,text2,text3,text4,text5,text6,text7,text8,text9,text10,text11,text12,text13,text14,text15,text16,text17,text18,text19,text20,text21,text22,text23,text24,text25,text26,text27,text28,text29,text30,text31,text32,text33,text34,text35,text36,text37,text38,text39,text40,text41,text42,text43,text44,text45,text46,text47,text48,text49,text50,text51,text52,text53,text54,text55,text56,text57,text58,text59,text60,text61)
+pic62 = R.img('musewiki/artwork/artwork(62).png').cqcode
+sendpic62 = str(pic62)
+title62 = '布若确认存档！凛登记账号！玛丽嘉检查数据！\n果然你就是一直支持着我们的那位那位大人啊，实在是感激不尽！'
+author62 = '画师：狗肉\n'
+author_page62 = '画师主页：https://m.weibo.cn/u/2899151975'
+text62 = title62 + sendpic62 + author_page62 + author_page62
+
+pic63 = R.img('musewiki/artwork/artwork(63).png').cqcode
+sendpic63 = str(pic63)
+title63 = '拿不到糖果还要被捉弄的倒霉蛋正在敲门呢！让我们祝她万圣节快乐！'
+author63 = '画师：图乌吐\n'
+author_page63 = '画师主页：https://twitter.com/thurim6'
+text63 = title63 + sendpic63 + author_page63 + author_page63
+
+text_dict = (text1,text2,text3,text4,text5,text6,text7,text8,text9,text10,text11,text12,text13,text14,text15,text16,text17,text18,text19,text20,text21,text22,text23,text24,text25,text26,text27,text28,text29,text30,text31,text32,text33,text34,text35,text36,text37,text38,text39,text40,text41,text42,text43,text44,text45,text46,text47,text48,text49,text50,text51,text52,text53,text54,text55,text56,text57,text58,text59,text60,text61,text62,text63)
 #使用元组进行选择
 #别问我为什么不单独做个json，问就是想到的时候已经写完了就懒得改了=  =。
 
