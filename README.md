@@ -15,6 +15,8 @@ MuseDashWiki
 
 ![Visitors](https://jwenjian-visitor-badge-5.glitch.me/badge?page_id=Soung2279.musewiki.readme)
 
+### 2022/5/15  v future  因本人学业繁忙，暂时宣布跑路，更新与维护无限期延迟。
+  
 ### 功能介绍
 
 适用于``Hoshinobot V2+``的 **MuseDash Wiki插件**
